@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.sqlite"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  account   String   @unique
+  password  String
+  email     String   @unique
+  name      String
+}
+
+model Datatable001 {
+  id             String        @id @default(uuid())
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  stringColumn   String
+  floatColumn    Float
+  integerColumn  Int
+  booleanColumn  Boolean
+  datatable002   Datatable002? @relation(fields: [datatable002Id], references: [id])
+  datatable002Id String?
+}
+
+model Datatable002 {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  stringColumn  String
+  floatColumn   Float
+  integerColumn Int
+  booleanColumn Boolean
+  Datatable001  Datatable001[]
+}
