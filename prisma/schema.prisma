@@ -17,25 +17,25 @@ model User {
   name      String
 }
 
-model Datatable001 {
-  id             String        @id @default(uuid())
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  stringColumn   String
-  floatColumn    Float
-  integerColumn  Int
-  booleanColumn  Boolean
-  datatable002   Datatable002? @relation(fields: [datatable002Id], references: [id])
-  datatable002Id String?
-}
-
-model Datatable002 {
-  id            String         @id @default(uuid())
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+model Data1 {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
   stringColumn  String
   floatColumn   Float
   integerColumn Int
   booleanColumn Boolean
-  Datatable001  Datatable001[]
+  data2         Data2?   @relation(fields: [data2Id], references: [id])
+  data2Id       String?
+}
+
+model Data2 {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  stringColumn  String
+  floatColumn   Float
+  integerColumn Int
+  booleanColumn Boolean
+  Data1         Data1[]
 }

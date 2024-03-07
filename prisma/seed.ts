@@ -15,7 +15,7 @@ async function main() {
     create: { ...DEFAULT_ADMIN },
     update: { ...DEFAULT_ADMIN },
   });
-  await prisma.datatable002.create({
+  await prisma.data2.create({
     data: {
       stringColumn: "xxx",
       floatColumn: 1.2,
